@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Today's Expenditure</title>
+</head>
+<body>
+  <div class="main">
+    <p class="chart-container">
+      <svg id="pie-chart" viewBox="-16 -16 32 32"></svg>
+    </p>
+    <div id="expenditure-data"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+</head>
+<body>
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button class="prev-month">&#8249;</button>
+      <span class="month-year"></span>
+      <button class="next-month">&#8250;</button>
+    </div>
+    <div class="calendar-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    const calendar = document.querySelector('.calendar-table tbody');
+    const monthDisplay = document.querySelector('.month-year');
+    const prevBtn = document.querySelector('.prev-month');
+    const nextBtn = document.querySelector('.next-month');
+
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    function generateCalendar(year, month) {
+      calendar.innerHTML = ''; // Clear previous content
+
+      const firstDay = new Date(year, month, 1).getDay(); // Sunday as 0
+      const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1; // Adjust to make Monday 1st
+
+      monthDisplay.textContent = `${months[month]} ${year}`;
+
+      let day = 1;
+      let daysInMonthCount = daysInMonth(year, month);
+
+      // Generate calendar rows and cells
+      for (let i = 0; i < 6; i++) { // 6 rows to cover all days
+        const row = document.createElement('tr');
+
+        for (let j = 0; j < 7; j++) {
+          const cell = document.createElement('td');
+          
+          if (i === 0 && j < adjustedFirstDay) {
+            cell.textContent = ''; // Empty cells before the first day of the month
+          } else if (day <= daysInMonthCount) {
+            cell.textContent = day;
+            // Highlight today's date
+            if (day === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
+              cell.classList.add('today');
+            }
+            day++;
+          } else {
+            cell.textContent = ''; // Empty cells after the last day of the month
+          }
+
+          row.appendChild(cell);
+        }
+        calendar.appendChild(row); // Append the row to the calendar body
+      }
+    }
+
+    function daysInMonth(year, month) {
+      return new Date(year, month + 1, 0).getDate();
+    }
+
+    generateCalendar(currentYear, currentMonth);
+
+    prevBtn.addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentYear--;
+        currentMonth = 11;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentYear++;
+        currentMonth = 0;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+  </script>
+</body>
+</html>
+
+
+
+      <!-- Category Legend -->
+      <!-- <div class="legend">
+          <div class="legend-item">
+              <div class="legend-color" style="background-color: #f00;"></div> -->
+              <!-- <p class="data">Travel</p>
+          </div>
+          <div class="legend-item">
+              <div class="legend-color" style="background-color: #0f0;"></div>
+              <p class="data">Food</p>
+          </div>
+          <div class="legend-item">
+              <div class="legend-color" style="background-color: #00f;"></div>
+              <p class="data">Shopping</p>
+          </div>
+          <div class="legend-item">
+              <div class="legend-color" style="background-color: #ff0;"></div>
+              <p class="data">Entertainment</p>
+          </div>
+      </div> -->

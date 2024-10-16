@@ -1,0 +1,200 @@
+.main{
+  display : flex;
+  flex-direction : row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(203, 228, 249); */
+  height : 100%;
+  width : 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading{
+  display: flex;
+  justify-content: center;
+}
+
+.main-data{
+  display : flex;
+  flex-direction : row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: lightgoldenrodyellow; */
+  width: 100%;
+  height : 50%
+}
+
+.main-data-1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width : 100%;
+  height : 300px;
+  /* background-color: lightskyblue; */
+}
+
+.main-data-2{
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width : 100%;
+  height : 300px;
+  margin-left : 25px;
+  /* background-color: lightskyblue; */
+}
+
+.main-data-numbers{
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width : 110%;
+  height : 300px;
+  margin-left : 25px;
+  /* background-color: lightsalmon; */
+  font-weight: bold;
+}
+
+.data{
+  height : 50px;
+  width : 115px;
+  /* background-color: #7fffd4; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:self-start;
+  margin-left : 10px;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  font-weight: bold;
+}
+
+.outer-data-circle{
+  height : 220px;
+  width : 220px;
+  border-radius : 50rem;
+  /* background-color: lightgreen; */
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-circle{
+  height : 200px;
+  width : 200px;
+  border-radius: 50rem;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  font-weight: bolder;
+}
+
+    /* 265px */
+.calendar-container {
+  display : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  /* background-color: lightgoldenrodyellow; */
+}
+
+.calendar-header button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 30px;
+  /* background-color: lightcyan; */
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.month-year {
+  font-size: 20px;
+  /* background-color: lightsalmon; */
+}
+
+.calendar-table { /*found the table yayay*/
+  /* width: 100%; */
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-table table {
+  border-collapse: collapse;
+}
+
+.calendar-table th, .calendar-table td {
+  border: 1px solid #ffffff;
+  padding: 24px;
+  text-align: center;
+}
+
+.calendar-table th {
+  background-color: #ffffff;
+}
+
+.calendar-table td.today {
+  background-color: #b9eab9; /* Green color for today's date */
+}
+
+.chart-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-left : -225px;
+  z-index : -1;
+}
+
+/* Ensure the SVG remains a perfect circle */
+svg {
+  width: 220px;
+  height: 220px;
+  transform: rotate(-90deg); /* Rotate the chart to start at the top */
+}
+
+/* Style for category labels */
+.data-2 {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
