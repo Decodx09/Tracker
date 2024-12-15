@@ -16,7 +16,7 @@ services:
 
   nodejs:
     build:
-      context: ./nodejs
+      context: ./backend
     ports:
       - "3000:3000"
     depends_on:
