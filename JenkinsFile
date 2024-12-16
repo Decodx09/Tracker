@@ -3,17 +3,26 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
+                // Clone the repository
                 git 'https://github.com/Decodx09/Tracker.git'
             }
         }
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                sh 'make build'
+                // Install Node.js dependencies
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'make test'
+                // Run tests
+                sh 'npm test'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Build your project if necessary
+                sh 'npm run build'
             }
         }
     }
