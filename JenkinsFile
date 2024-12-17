@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Build your project if necessary
+                // Build your project if necessary something bruh
                 sh 'npm run build'
             }
         }
