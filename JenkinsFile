@@ -9,20 +9,25 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                // Install Node.js dependencies
-                sh 'npm install'
+                dir('backend') {
+                    sh 'npm install'
+                }
             }
         }
         stage('Test') {
             steps {
-                // Run tests
-                sh 'npm test'
+                dir('backend') {
+                    // Run tests
+                    sh 'npm test'
+                }
             }
         }
         stage('Build') {
             steps {
-                // Build your project if necessary something bruh
-                sh 'npm run build'
+                dir('backend') {
+                    // Build your project
+                    sh 'npm run build'
+                }
             }
         }
     }
