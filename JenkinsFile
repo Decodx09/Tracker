@@ -37,7 +37,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                // Example deployment command (adjust as necessary for your environment)
                 sh '''
                 scp tracker-backend.tar.gz user@your-server:/path/to/deploy/
                 ssh user@your-server "cd /path/to/deploy/ && tar -xzf tracker-backend.tar.gz && pm2 restart tracker"
@@ -47,7 +46,7 @@ pipeline {
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up workspace...'
-                cleanWs() // Clean the Jenkins workspace
+                cleanWs()
             }
         }
     }
