@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                // Clone the repository
                 git 'https://github.com/Decodx09/Tracker.git'
             }
         }
@@ -14,20 +13,41 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Lint') {
             steps {
                 dir('backend') {
-                    // Run tests
-                    sh 'npm test'
+                    sh 'npm run lint'
                 }
             }
         }
         stage('Build') {
             steps {
                 dir('backend') {
-                    // Build your project
                     sh 'npm run build'
                 }
+            }
+        }
+        stage('Package') {
+            steps {
+                dir('backend') {
+                    sh 'tar -czf tracker-backend.tar.gz dist'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Example deployment command (adjust as necessary for your environment)
+                sh '''
+                scp tracker-backend.tar.gz user@your-server:/path/to/deploy/
+                ssh user@your-server "cd /path/to/deploy/ && tar -xzf tracker-backend.tar.gz && pm2 restart tracker"
+                '''
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                echo 'Cleaning up workspace...'
+                cleanWs() // Clean the Jenkins workspace
             }
         }
     }

@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../server'); // Import the app from your server file
+const app = require('../index'); // Import the app from your server file
 
 describe('GET /today-expenditure', () => {
     it('should return the money spent today', async () => {
