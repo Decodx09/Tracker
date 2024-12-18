@@ -23,7 +23,7 @@ pipeline {
         stage('Checkout from Git') {
             steps {
                 echo "Checking out from Git..."
-                git branch: 'main', url: 'https://github.com/Decodx09/S-Commerce.git', scriptPath: 'Jenkinsfile'
+                git branch: 'master', url: 'https://github.com/Decodx09/Tracker.git', scriptPath: 'Jenkinsfile'
                 echo "Checked out from Git."
             }
         }
